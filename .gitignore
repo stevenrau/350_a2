@@ -1,0 +1,6 @@
+# Ignore and design documents
+*.txt
+
+# Ignore the image directories
+artwork/
+artist_thumbnail/
