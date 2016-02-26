@@ -1,0 +1,224 @@
+/* Top-level body style */
+body
+{
+    font-family: "Arial", Gadget, sans-serif;
+    font-size: 20px;
+    color: #ffffff;
+    margin:15px;
+    padding: 15px;
+    padding-top: 0px;  /* Keep the header tight to the top */
+    background-color: #1a1a1a;
+}
+
+/*======================================================= */
+/* Start of header CSS */
+/*======================================================= */
+header
+{
+    text-align:center;
+    border-radius: 1em;
+    background:#0d0d0d;
+    border:5px solid #CCC;
+    width:95%;
+    margin:2% auto;
+    padding-bottom: 15px;
+    padding
+}
+
+/* The logo in the header */
+#header_logo
+{
+    border-radius: 1em;
+    padding: 2%;
+    vertical-align: middle;
+    display:inline;
+}
+
+/* The title in the header */
+#site_title
+{
+    padding-left:8%;
+    padding-right:8%;
+    font-size:4vw;
+    vertical-align: middle;
+    text-align:center;
+    display:inline-block;
+    color:#ffffff;
+}
+
+.navigation
+{
+    font-weight: bold;
+    padding: 10px;
+    text-decoration: none;
+    color:#b3b3b3;
+}
+
+/* The nav bar in the header */
+.navigation:hover
+{
+    color:#89de7a;
+}
+
+nav
+{
+    font-size:3vw;
+    text-align:center;
+    margin:1%;
+    color:#ffffff;
+}
+
+/*======================================================= */
+/* Start of home content CSS */
+/*======================================================= */
+
+#home_main
+{
+    font-size:2.3vw;
+    margin:2% auto;
+    width:95%;
+}
+
+/* Keep the image at native resolution until it no longer fits on the page */
+@media only screen and (max-width: 475px)
+{
+    #content_pic
+    {
+        width:100%;
+        height:auto;
+    }
+}
+
+/* Handle retina displays: Load a higher res image */
+@media
+(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
+{
+    #content_pic
+    {
+        content: url("http://lorempixel.com/800/600/")
+    }
+}
+
+/*======================================================= */
+/* Start of aboutMe content CSS */
+/*======================================================= */
+
+#business_card
+{
+    margin:2% auto;
+    text-align:center;
+    background-color:#525252;
+    display:table;
+    border:5px solid #CCC;
+    border-radius: 0.75em;
+    padding-top:15px;
+    padding-bottom:15px;
+    width:60%;
+}
+
+#card_left
+{
+    vertical-align: middle;
+    display: table-cell;
+}
+
+#card_pic
+{
+    border:3px solid #000000;
+    vertical-align: middle;
+    display:inline-block;
+    height:60%;
+    width:auto;
+}
+
+#left_info
+{
+    display:inline-block;
+    vertical-align: middle;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+#card_name
+{
+    text-decoration: underline
+    padding-left: 3%;
+    padding-right: 3%;
+    font-size:3vw;
+    margin-bottom: 0;
+}
+
+.card_info
+{
+    font-size:1.6vw;
+}
+
+/* Keep the retina indicator "hidden" unless we are using a retina display. Used as a flag for the Jquery window resize callback */
+#retina_indicator
+{
+    display:none;
+}
+
+@media
+(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)
+{
+    /* Display this "flag" once we've detected retina display */
+    #retina_indicator
+    {
+        display:block;
+    }
+}
+
+/*======================================================= */
+/* Start of contactMe content CSS */
+/*======================================================= */
+
+#form_div
+{
+    margin:2% auto;
+    text-align:center;
+    background-color:#525252;
+    display:table;
+    border:5px solid #CCC;
+    border-radius: 0.75em;
+    padding:10px;
+    width:60%;
+}
+
+.form_input
+{
+    border-radius: 0.4em;
+    margin-bottom: 8px;
+}
+
+/*======================================================= */
+/* Start of footer CSS */
+/*======================================================= */
+
+footer
+{
+    text-align:center;
+    border-radius: 1em;
+    background:#0d0d0d;
+    border:5px solid #CCC;
+    width:95%;
+    margin:2% auto;
+    padding: 10px;
+}
+
+.footer_social
+{
+    margin:0 auto;
+    width: 40%;
+}
+
+.footer_social li
+{
+    list-style:none;
+    display:inline;
+}
+
+.social_icons
+{
+    border-radius: 3em;
+}

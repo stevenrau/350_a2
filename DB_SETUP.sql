@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS artists
 (
   id             int(6)       UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   name           varchar(50)  NOT NULL,
-  thumbnail_url  varchar(256)
+  thumbnail_url  varchar(256) DEFAULT '/350_a2/artist_thumbnail/default.png'
            -- Artist thumnbnail img URL can be empty since we want to allow creating an
            -- artist without providing a thumbnail image.
            -- If thumbnail image is provided for an album, it will be stored in
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS albums
   id           int(6)         UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   title        varchar(50)    NOT NULL,
   artist_id    int(6)         UNSIGNED NOT NULL,
-  artwork_url  varchar(256),
+  artwork_url  varchar(256)   DEFAULT '/350_a2/artwork/default.png',
            -- Artwork URL can be empty since we want to allow creating an
            -- album without providing artwork
            -- If atwork is provided for an album, it will be stored in a file

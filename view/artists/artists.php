@@ -1,7 +1,7 @@
 <html lang="en">
     <head>
-        <link rel="stylesheet" type="text/css" href="a2Style.css">
-        <title>Steven Rau - Music Database</title>
+        <link rel="stylesheet" type="text/css" href="/350_a2/a2Style.css">
+        <title>Artists</title>
     </head>
 
     <body>
@@ -17,9 +17,10 @@
         </header>
 
         <div id="home_main">
-            <div id="main_text"> Navigate using the links above to view, add, delete, and modify entries in the music database! </div>
+            <div id="main_text"> Artists page </div>
         </div>
 
+        <a href="artistDisplay.php"> Click here to display all artists </a>
 
 
         <footer>

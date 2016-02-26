@@ -39,12 +39,14 @@
                 {
                     die("Connectin Failed:".self::$instance->connect_error);
                 }
-                echo "Connected succesfully <br>";
             }
 
             return self::$instance;
         }
 
+        /*
+         * Dummy function to test thigns out
+         */
         public function printText()
         {
             echo "This is the DB's printText function <br>";

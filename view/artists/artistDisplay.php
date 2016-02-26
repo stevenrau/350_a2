@@ -1,7 +1,7 @@
 <html lang="en">
     <head>
-        <link rel="stylesheet" type="text/css" href="a2Style.css">
-        <title>Steven Rau - Music Database</title>
+        <link rel="stylesheet" type="text/css" href="/350_a2/a2Style.css">
+        <title>Artists</title>
     </head>
 
     <body>
@@ -17,9 +17,26 @@
         </header>
 
         <div id="home_main">
-            <div id="main_text"> Navigate using the links above to view, add, delete, and modify entries in the music database! </div>
+            <div id="main_text"> Artists display </div>
         </div>
 
+        <?php
+            // Include the artists controller file
+            include("../../controller/artists_controller.php");
+
+            $controller = new Artists_Controller();
+            $controller->invoke();
+
+            if (isset($artists))
+            {
+                echo "artists is set!<br>";
+            }
+            foreach ($controller->artists as $curArtist)
+            {
+                echo '<p> Name: ' . $curArtist->name . "   URL: " . $curArtist->thumbnail_url;
+            }
+
+        ?>
 
 
         <footer>
