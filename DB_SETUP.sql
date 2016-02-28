@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS tracks
 );
 
 
--- Insert artists into a table
+-- Insert artists into the table
 INSERT INTO artists(name) VALUES ('John Denver');
 INSERT INTO artists(name) VALUES ('Kendrick Lamar');
 INSERT INTO artists(name) VALUES ('Adele');
@@ -59,7 +59,7 @@ UPDATE artists SET thumbnail_url='/350_a2/artist_thumbnail/Adele.jpg' WHERE name
 UPDATE artists SET thumbnail_url='/350_a2/artist_thumbnail/Taylor Swift.jpg' WHERE name='Taylor Swift';
 
 
--- Insert albums into a table
+-- Insert albums into the table
 INSERT INTO albums(title, artist_id) VALUES ('To Pimp a Butterfly', 2);
 INSERT INTO albums(title, artist_id) VALUES ('25', 3);
 INSERT INTO albums(title, artist_id) VALUES ('1989', 4);
@@ -67,3 +67,6 @@ INSERT INTO albums(title, artist_id) VALUES ('1989', 4);
 -- Give some of the albums artwork
 UPDATE albums SET artwork_url='/350_a2/artwork/To Pimp a Butterfly.png' WHERE title='To Pimp a Butterfly';
 UPDATE albums SET artwork_url='/350_a2/artwork/1989.jpg' WHERE title='1989';
+
+
+-- Insert tracks into the table

@@ -31,7 +31,7 @@
             <h3 class="operation_header"> Possible Operations: </h3>
             <ul id="operation_list">
                 <li class="operation_list">
-                    <a class="operation_list" href="albumAdd.php"> Add an album </a>
+                    <a class="operation_list" href="albumAdd.php"> Add a new album </a>
                 </li>
             </ul>
 
@@ -61,14 +61,12 @@
                             <input type="submit" name="editAlbum" value="Edit"/>
                         </form>
                     </td>
-                    <!--
                     <td>
-                        <form name="deleteArtist" action="artistDelete.php" method="GET">
-                            <input type="hidden" name="artistId" value="<?php echo $artistId; ?>"/>
-                            <input type="submit" name="deleteArtist" value="Delete"/>
+                        <form name="deleteAlbum" action="albumDelete.php" method="GET">
+                            <input type="hidden" name="albumId" value="<?php echo $albumId; ?>"/>
+                            <input type="submit" name="deleteAlbum" value="Delete"/>
                         </form>
                     </td>
-                    -->
                 </tr>
                 <?php endforeach; ?>
             </table>

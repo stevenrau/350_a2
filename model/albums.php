@@ -37,6 +37,20 @@
                return $db->insert_id;
           }
 
+           /*
+           * Deletes album with the given ID from the database
+           */
+          public static function deleteAlbum($albumId)
+          {
+               $db = Database::getInstance();
+
+               $sql = 'DELETE FROM albums WHERE id=' . $albumId;
+
+               $succ = $db->query($sql);
+
+               return $succ;
+          }
+
           /*
            * Gets the album for the provided ID
            */

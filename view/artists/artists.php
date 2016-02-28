@@ -31,7 +31,7 @@
             <h3 class="operation_header"> Possible Operations: </h3>
             <ul id="operation_list">
                 <li class="operation_list">
-                    <a class="operation_list" href="artistAdd.php"> Add an artist </a>
+                    <a class="operation_list" href="artistAdd.php"> Add a new artist </a>
                 </li>
             </ul>
 

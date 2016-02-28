@@ -75,6 +75,32 @@ class Albums_Controller
      }
 
      /**
+      * Deletes an album from the model
+      *
+      * @param[in] albumID  ID of the album to remove
+      */
+     public function deleteAlbum($albumID)
+     {
+          // Pass on the id to the model to handle the deletion
+          $success = Album::deleteAlbum($albumID);
+
+          if ($success)
+          {
+               echo "<script type=\"text/javascript\">
+                         alert(\"Successfully deleted the album\");
+                    </script>";
+          }
+          else
+          {
+               echo "<script type=\"text/javascript\">
+                         alert(\"ERROR: Could not delete the album.\");
+                    </script>";
+
+               return;
+          }
+     }
+
+     /**
       * Updates an album's title
       *
       * @param[in] albumId        ID of the album to update
