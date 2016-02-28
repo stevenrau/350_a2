@@ -46,6 +46,20 @@
                return $newId['id'];
           }
 
+          /*
+           * Deletes artist with the given ID from the database
+           */
+          public static function deleteArtist($artistId)
+          {
+               $db = Database::getInstance();
+
+               $sql = 'DELETE FROM artists WHERE id=' . $artistId;
+
+               $succ = $db->query($sql);
+
+               return $succ;
+          }
+
 
           /*
            * Static function to get all artists from the DB in a list

@@ -20,7 +20,7 @@ class Artists_Controller
           // If the artistId is not set in the URL, redirect to the error page
           if (!isset($_GET['artistId']))
           {
-              // header("Location: ../../error.php");
+               header("Location: ../../error.php");
                die("ERROR: Missing artist ID");
           }
 
@@ -72,6 +72,32 @@ class Artists_Controller
           echo "<script type=\"text/javascript\">
                     alert(\"Successfully added a new artist\");
                </script>";
+     }
+
+     /**
+      * Deletes an artist from the model
+      *
+      * @param[in] artistId  ID of the artist to remove
+      */
+     public function deleteArtist($artistId)
+     {
+          // Pass on the id to the model to handle the deletion
+          $success = Artist::deleteArtist($artistId);
+
+          if ($success)
+          {
+               echo "<script type=\"text/javascript\">
+                         alert(\"Successfully deleted the artist\");
+                    </script>";
+          }
+          else
+          {
+               echo "<script type=\"text/javascript\">
+                         alert(\"ERROR: Could not delete the artist.\");
+                    </script>";
+
+               return;
+          }
      }
 
      /**

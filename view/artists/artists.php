@@ -52,7 +52,12 @@
                             <input type="submit" name="editArtist" value="Edit"/>
                         </form>
                     </td>
-
+                    <td>
+                        <form name="deleteArtist" action="artistDelete.php" method="GET">
+                            <input type="hidden" name="artistId" value="<?php echo $artistId; ?>"/>
+                            <input type="submit" name="deleteArtist" value="Delete"/>
+                        </form>
+                    </td>
                 </tr>
                 <?php endforeach; ?>
             </table>

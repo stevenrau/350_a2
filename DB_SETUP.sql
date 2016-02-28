@@ -49,4 +49,11 @@ CREATE TABLE IF NOT EXISTS tracks
 -- Insert into a table
 INSERT INTO artists(name) VALUES ('John Denver');
 INSERT INTO artists(name) VALUES ('deadmau5');
+INSERT INTO artists(name) VALUES ('Adele');
+INSERT INTO artists(name) VALUES ('Taylor Swift');
+INSERT INTO artists(name) VALUES ('Johnny Cash');
 
+-- Give some of the artists thumbnails
+UPDATE artists SET thumbnail_url='/350_a2/artist_thumbnail/John Denver.jpg' WHERE name='John Denver';
+UPDATE artists SET thumbnail_url='/350_a2/artist_thumbnail/Adele.jpg' WHERE name='Adele';
+UPDATE artists SET thumbnail_url='/350_a2/artist_thumbnail/Taylor Swift.jpg' WHERE name='Taylor Swift';

@@ -5,3 +5,9 @@
 artwork/
 artist_thumbnail/
 icons/
+
+# Make exceptions for the images used in the DB setup
+!artist_thumbnail/default.png
+!artist_thumbnail/Adele.jpg
+!artist_thumbnail/John\ Denver.jpg
+!artist_thumbnail/Taylor\ Swift.jpg
