@@ -54,7 +54,6 @@ class Artists_Controller
           // If the new Id is negative, there was already an artist with the given name
           if ($newId < 0)
           {
-               // Display an alert window and return if the field was empty
                echo "<script type=\"text/javascript\">
                          alert(\"An artist with that name already exists\");
                     </script>";
@@ -68,7 +67,6 @@ class Artists_Controller
                $this->uploadArtistThumbnail($newId, $imageName, $tmpImgName);
           }
 
-          // Display an alert window and return if the field was empty
           echo "<script type=\"text/javascript\">
                     alert(\"Successfully added a new artist\");
                </script>";

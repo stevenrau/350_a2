@@ -176,6 +176,34 @@ ul
     width: 200px;
 }
 
+/*======================================================= */
+/* Start of albums page content CSS */
+/*======================================================= */
+
+
+#album_list
+{
+    text-align:center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+album_list_header
+{
+    font-weight: bold;
+}
+
+.albumRow
+{
+    margin: 50px;
+}
+
+.albumImg
+{
+    width: 40%;
+    height:auto;
+}
+
+
 
 /*======================================================= */
 /* Start of footer CSS */

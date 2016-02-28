@@ -80,7 +80,7 @@
           }
 
           /*
-           * Returns the artist associated witht he given id
+           * Returns the artist associated witht the given id
            */
           public static function getArtistById($artistId)
           {
@@ -93,7 +93,7 @@
           }
 
           /*
-           * Updates the gien artist's name
+           * Updates the given artist's name
            */
           public static function updateArtistName($artistId, $newName)
           {
@@ -124,6 +124,26 @@
                $succ = $db->query($sql);
 
                return $succ;
+          }
+
+          /**
+           * Returns the ID for the artist witht he given name or -1 if they do not exists
+           */
+          public static function getArtistId($name)
+          {
+               $db = Database::getInstance();
+
+               // First make sure there isn't already an entry with the given name
+               $sql = 'SELECT * FROM artists WHERE name=\'' . $name . '\'';
+               $req = $db->query($sql);
+               if ($req->num_rows == 0)
+               {
+                    return -1;
+               }
+
+               $artist = $req->fetch_assoc();
+
+               return $artist['id'];
           }
      }
 
