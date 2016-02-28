@@ -29,6 +29,47 @@ class Artists_Controller
      }
 
      /**
+      * Adds an artist to the model
+      *
+      * @param[in] name        The new artist's name
+      * @param[in] imageName   Filename of uploaded image (from _FILES['newThumbnail']['name'])
+      *                        or NULL if no image is required
+      * @param[in] tmpImgName  Filename of temp image upload (from _FILES['newThumbnail']['tmp_name'])
+      *                        or NULL if no image is required
+      */
+     public function addArtist($name, $imageName, $tmpImgName)
+     {
+          if(0 == strlen($name))
+          {
+               // Display an alert window and return if the field was empty
+               echo "<script type=\"text/javascript\">
+                         alert(\"The name field cannot be empty\");
+                    </script>";
+
+               return;
+          }
+
+          $newId = Artist::addArtist($name);
+
+          // If the new Id is negative, there was already an artist with the given name
+          if ($newId < 0)
+          {
+               // Display an alert window and return if the field was empty
+               echo "<script type=\"text/javascript\">
+                         alert(\"An artist with that name already exists\");
+                    </script>";
+
+               return;
+          }
+          else
+          {
+               echo "<script type=\"text/javascript\">
+                         alert(\"Successfully added new artist\");
+                    </script>";
+          }
+     }
+
+     /**
       * Updates an artist's name
       *
       * @param[in] artistId       ID of the artist to update
@@ -45,13 +86,49 @@ class Artists_Controller
 
                return;
           }
+
+          // Grab the artist with the given ID
+          $artist = Artist::getArtistById($artistId);
+
+          $success = Artist::updateArtistName($artistId, $newArtistName);
+          if ($success)
+          {
+               echo "<script type=\"text/javascript\">
+                         alert(\"Successfully updated the artist name\");
+                    </script>";
+          }
+          else
+          {
+               echo "<script type=\"text/javascript\">
+                         alert(\"ERROR: Could not update the artist name. Perhaps an artist already exists with that name.\");
+                    </script>";
+
+               return;
+          }
+
+          // If not using the default image, update to the new name
+          if (strcmp("default.png", basename($artist->thumbnail_url)) !== 0)
+          {
+               // Construct the relative image urls
+               $oldImage = "../../artist_thumbnail/" . basename($artist->thumbnail_url);
+               $newImage = "../../artist_thumbnail/" . $newArtistName . '.' .
+                           pathinfo($oldImage, PATHINFO_EXTENSION);
+
+               // Rename the image
+               rename($oldImage, $newImage);
+
+               $newAbsolute = "/350_a2/artist_thumbnail/" . basename($newImage);
+
+               // And update the url in the db
+               Artist::updateArtistThumbUrl($artistId, $newAbsolute);
+          }
      }
 
      /**
       * Stores a new thumbnail image for a given artist
       *
       * @param[in] artistId    ID of the artist to update
-      * @param[in] imageName   Filename of uplaoded image (from _FILES['newThumbnail']['name'])
+      * @param[in] imageName   Filename of uploaded image (from _FILES['newThumbnail']['name'])
       * @param[in] tmpImgName  Filename of temp image upload (from _FILES['newThumbnail']['tmp_name'])
       */
      public function uploadArtistThumbnail($artistId, $imageName, $tmpImgName)
@@ -63,6 +140,7 @@ class Artists_Controller
           $newFileName = $artist->name . "." . pathinfo($imageName, PATHINFO_EXTENSION);
           $uploadDir = "../../artist_thumbnail/";
           $uploadFile = $uploadDir . $newFileName;
+
 
           // Copy the tmp img to the destination location
           if (!move_uploaded_file($tmpImgName, $uploadFile))
@@ -76,14 +154,12 @@ class Artists_Controller
 
           if ($success)
           {
-               // Display an alert window and return if the field was empty
                echo "<script type=\"text/javascript\">
                          alert(\"Successfully uploaded new artist image\");
                     </script>";
           }
           else
           {
-               // Display an alert window and return if the field was empty
                echo "<script type=\"text/javascript\">
                          alert(\"ERROR: Could not upload new artist image\");
                     </script>";

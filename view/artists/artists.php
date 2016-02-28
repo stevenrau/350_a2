@@ -1,3 +1,12 @@
+<?php
+    // Include the artists controller file
+    include("../../controller/artists_controller.php");
+
+    // Get all of the artists
+    $controller = new Artists_Controller();
+    $artistsList = $controller->getAllArtists();
+?>
+
 <html lang="en">
     <head>
         <link rel="stylesheet" type="text/css" href="/350_a2/a2Style.css">
@@ -16,21 +25,40 @@
             </nav>
         </header>
 
-        <div id="artists_main">
+        <div id="home_main">
             <h2> Artists  </h2>
+
             <h3 class="operation_header"> Possible Operations: </h3>
             <ul id="operation_list">
-                <li class="operation_list"
-                    ><a class="operation_list" href="artistDisplay.php"> View all artists </a>
-                </li>
                 <li class="operation_list">
                     <a class="operation_list" href="artistAdd.php"> Add an artist </a>
                 </li>
-                <li class="operation_list">
-                    <a class="operation_list" href="artistSearch.php"> Search for an artist </a>
-                </li>
             </ul>
+
+            <h3 class="operation_header"> List of all artists: </h3>
+            <table id="artist_list" border="1" cellpadding="5">
+                <tr>
+                    <td class="artist_list_header">Name</td>
+                    <td class="artist_list_header">Artist Image</td>
+                </tr>
+                <?php foreach ($artistsList as $curArtist) : ?>
+                <tr>
+                    <td> <?php echo $curArtist->name ?></td>
+                    <td class="imgCol"> <img class="artistImg" src=" <?php echo $curArtist->thumbnail_url ?>" /></td>
+                    <?php $artistId = $curArtist->id; ?>
+                    <td>
+                        <form name="editArtist" action="artistUpdate.php" method="GET">
+                            <input type="hidden" name="artistId" value="<?php echo $artistId; ?>"/>
+                            <input type="submit" name="editArtist" value="Edit"/>
+                        </form>
+                    </td>
+
+                </tr>
+                <?php endforeach; ?>
+            </table>
         </div>
+
+
 
 
         <footer>
