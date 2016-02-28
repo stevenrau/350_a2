@@ -2,9 +2,8 @@
 *.txt
 
 # Ignore the image directories
-artwork/
-artist_thumbnail/
-icons/
+artwork/*
+artist_thumbnail/*
 
 # Make exceptions for the images used in the DB setup
 !artist_thumbnail/default.png
