@@ -17,6 +17,7 @@
         </header>
 
         <div id="home_main">
+            <h2>Welcome!</h2>
             <div id="main_text"> Navigate using the links above to view, add, delete, and modify entries in the music database! </div>
         </div>
 

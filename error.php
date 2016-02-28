@@ -1,7 +1,7 @@
 <html lang="en">
     <head>
-        <link rel="stylesheet" type="text/css" href="/350_a2/a2Style.css">
-        <title>Artists</title>
+        <link rel="stylesheet" type="text/css" href="a2Style.css">
+        <title>Steven Rau - Music Database</title>
     </head>
 
     <body>
@@ -16,21 +16,11 @@
             </nav>
         </header>
 
-        <div id="artists_main">
-            <h2> Artists  </h2>
-            <h3 class="operation_header"> Possible Operations: </h3>
-            <ul id="operation_list">
-                <li class="operation_list"
-                    ><a class="operation_list" href="artistDisplay.php"> View all artists </a>
-                </li>
-                <li class="operation_list">
-                    <a class="operation_list" href="artistAdd.php"> Add an artist </a>
-                </li>
-                <li class="operation_list">
-                    <a class="operation_list" href="artistSearch.php"> Search for an artist </a>
-                </li>
-            </ul>
+        <div id="home_main">
+            <h2>Oops!</h2>
+            <div id="main_text"> Something went wrong. </div>
         </div>
+
 
 
         <footer>

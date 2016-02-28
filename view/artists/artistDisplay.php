@@ -1,3 +1,12 @@
+<?php
+    // Include the artists controller file
+    include("../../controller/artists_controller.php");
+
+    // Get all of the artists
+    $controller = new Artists_Controller();
+    $artistsList = $controller->getAllArtists();
+?>
+
 <html lang="en">
     <head>
         <link rel="stylesheet" type="text/css" href="/350_a2/a2Style.css">
@@ -17,26 +26,31 @@
         </header>
 
         <div id="home_main">
-            <div id="main_text"> Artists display </div>
+            <h2> Artists  </h2>
+            <h3 class="operation_header"> List of all artists: </h3>
+            <table id="artist_list" border="1" cellpadding="5">
+                <tr>
+                    <td class="artist_list_header">Name</td>
+                    <td class="artist_list_header">Artist Image</td>
+                </tr>
+                <?php foreach ($artistsList as $curArtist) : ?>
+                <tr>
+                    <td> <?php echo $curArtist->name ?></td>
+                    <td class="imgCol"> <img class="artistImg" src=" <?php echo $curArtist->thumbnail_url ?>" /></td>
+                    <?php $artistId = $curArtist->id; ?>
+                    <td>
+                        <form name="editArtist" action="artistUpdate.php" method="GET">
+                            <input type="hidden" name="artistId" value="<?php echo $artistId; ?>"/>
+                            <input type="submit" name="editArtist" value="Edit"/>
+                        </form>
+                    </td>
+
+                </tr>
+                <?php endforeach; ?>
+            </table>
         </div>
 
-        <?php
-            // Include the artists controller file
-            include("../../controller/artists_controller.php");
 
-            $controller = new Artists_Controller();
-            $controller->invoke();
-
-            if (isset($artists))
-            {
-                echo "artists is set!<br>";
-            }
-            foreach ($controller->artists as $curArtist)
-            {
-                echo '<p> Name: ' . $curArtist->name . "   URL: " . $curArtist->thumbnail_url;
-            }
-
-        ?>
 
 
         <footer>

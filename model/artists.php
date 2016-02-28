@@ -34,6 +34,35 @@
 
                return $list;
           }
+
+          /*
+           * Returns the artist associated witht he given id
+           */
+          public static function getArtistById($artistId)
+          {
+               $db = Database::getInstance();
+               $req = $db->query('SELECT * from artists WHERE id = ' . $artistId);
+
+               $newArtist = $req->fetch_assoc();
+
+               return new Artist($newArtist['id'], $newArtist['name'], $newArtist['thumbnail_url']);
+          }
+
+          /*
+           * Updates the given artist's thumbnail URL
+           */
+          public static function updateArtistThumbUrl($artistId, $thumbnaillUrl)
+          {
+               $db = Database::getInstance();
+               $sql = 'UPDATE artists SET thumbnail_url=\'' . $thumbnaillUrl . '\' WHERE id=' . $artistId;
+               $succ = $db->query($sql);
+
+               if (!$succ)
+               {
+                    echo "<h1> " . $sql . " </h1>";
+               }
+               return $succ;
+          }
      }
 
 

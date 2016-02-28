@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS albums
            -- album without providing artwork
            -- If atwork is provided for an album, it will be stored in a file
            -- folder and the location will be saved here
-  FOREIGN KEY (artist_id)  REFERENCES artists(id) ON DELETE CASCADE
+  FOREIGN KEY (artist_id)  REFERENCES artists(id) ON DELETE CASCADE ON UPDATE CASCADE
            -- Cascade DELETE from parent table 'artists' to this child table
            -- i.e. If an artist is deleted from the artist table, all records
            --      involving that atist in this child table are also deleted
@@ -37,12 +37,12 @@ CREATE TABLE IF NOT EXISTS tracks
   id         int(6)       UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   title      varchar(50)  NOT NULL,
   artist_id  int(6)       UNSIGNED NOT NULL,
-  album_id   int(6)       UNSIGNED NOT NULL,
-  FOREIGN KEY (artist_id) REFERENCES artists(id) ON DELETE CASCADE,
+  album_id   int(6)       UNSIGNED,
+  FOREIGN KEY (artist_id) REFERENCES artists(id) ON DELETE CASCADE ON UPDATE CASCADE,
            -- Cascade DELETE from parent table 'artists' to this child table
            -- i.e. If an artist is deleted from the artist table, all records
            --      involving that atist in this child table are also deleted
-  FOREIGN KEY (album_id)  REFERENCES albums(id) ON DELETE CASCADE
+  FOREIGN KEY (album_id)  REFERENCES albums(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 
