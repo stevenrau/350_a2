@@ -8,8 +8,17 @@
     if( isset($_POST['submit']) )
     {
         $newName = $_POST['newName'];
+        $imgName = NULL;
+        $imgTmpName = NULL;
 
-        $controller->addArtist($_POST['newName'], NULL, NULL);
+        // If an image was provided, get the name details
+        if (is_uploaded_file($_FILES['newThumbnail']['tmp_name']))
+        {
+            $imgName = $_FILES["newThumbnail"]["name"];
+            $imgTmpName = $_FILES["newThumbnail"]["tmp_name"];
+        }
+
+        $controller->addArtist($newName, $imgName, $imgTmpName);
     }
 ?>
 

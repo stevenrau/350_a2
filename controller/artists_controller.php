@@ -61,12 +61,17 @@ class Artists_Controller
 
                return;
           }
-          else
+
+          // If an image was provided, set it
+          if ($imageName != NULL)
           {
-               echo "<script type=\"text/javascript\">
-                         alert(\"Successfully added new artist\");
-                    </script>";
+               $this->uploadArtistThumbnail($newId, $imageName, $tmpImgName);
           }
+
+          // Display an alert window and return if the field was empty
+          echo "<script type=\"text/javascript\">
+                    alert(\"Successfully added a new artist\");
+               </script>";
      }
 
      /**
