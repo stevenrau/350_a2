@@ -1,30 +1,22 @@
 <?php
     // Include the album controller file
-    include("../../controller/albums_controller.php");
+    include("../../controller/tracks_controller.php");
 
-    // Get the artist we want to update
-    $controller = new Albums_Controller();
-    $album = $controller->getAlbum($_GET['albumId']);
+    // Get the track we want to update
+    $controller = new Tracks_Controller();
+    $track = $controller->getTrack($_GET['trackId']);
 
     // If the submit change button was pressed, send info to the controller
     if( isset($_POST['submitNewTitle']) )
     {
-        $controller->updateAlbumTitle($_GET['albumId'], $_POST['newTitle']);
-    }
-
-    // If the upload new thumbnail button was pressed, send img info to the controller
-    if( isset($_POST['submitNewArtwork']) )
-    {
-        $controller->uploadAlbumArtwork($_GET['albumId'],
-                                        $_FILES["newArtwork"]["name"],
-                                        $_FILES["newArtwork"]["tmp_name"]);
+        $controller->updateTrackTitle($_GET['trackId'], $_POST['newTitle']);
     }
 ?>
 
 <html lang="en">
     <head>
         <link rel="stylesheet" type="text/css" href="/350_a2/a2Style.css">
-        <title>Albums</title>
+        <title>Tracks</title>
     </head>
 
     <body>
@@ -40,43 +32,35 @@
         </header>
 
         <div id="home_main">
-            <h2> Update Album Info </h2>
+            <h2> Update Track Info </h2>
 
-            <!-- Display the current artist info to be updated -->
-            <h3 class="operation_header"> Album chosen to update: </h3>
-            <p> *NOTE* Any updates made to this album will carry over into any tracks associated with this album.</p>
-            <table id="album_list" border="1" cellpadding="5">
+            <!-- Display the current track info to be updated -->
+            <h3 class="operation_header"> Track chosen to update: </h3>
+            <table id="track_list" border="1" cellpadding="5">
                 <tr>
-                    <td class="album_list_header">Album Art</td>
-                    <td class="album_list_header">Title</td>
-                    <td class="album_list_header">Artist</td>
-                    <td class="album_list_header">Artist Image</td>
+                    <td class="track_list_header">Album Art</td>
+                    <td class="track_list_header">Title</td>
+                    <td class="track_list_header">Artist</td>
+                    <td class="track_list_header">Album</td>
                 </tr>
                 <tr>
-                    <td class="imgCol"> <img class="albumImg" src=" <?php echo $album->artwork_url ?>" /></td>
-                    <td> <?php echo $album->title ?></td>
-                    <td> <?php echo $album->artist ?></td>
-                    <td class="imgCol"> <img class="artistImg" src=" <?php echo $album->artist_img_url ?>" /></td>
+                    <td class="imgCol"> <img class="albumImg" src=" <?php echo $track->artwork_url ?>" /></td>
+                    <td> <?php echo $track->title ?></td>
+                    <td> <?php echo $track->artist ?></td>
+                    <td> <?php echo $track->album ?></td>
 
                     <!-- Get the current albums's id to use in _GET methods -->
-                    <?php $albumId = $album->id; ?>
+                    <?php $trackId = $track->id; ?>
                 </tr>
             </table>
 
-            <!-- Use POST form to submit the new name  -->
+            <!-- Use POST form to submit the new title  -->
             <form action="" method="post">
-                New title:
+                New track title:
                 <input class="form_input" type="text" name="newTitle">
                 <input type="submit" name="submitNewTitle" value="Submit">
             </form>
 
-            <!-- Upload a new album image -->
-            <form action="" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="MAX_FILE_SIZE" value="512000" />
-                Upload new album artwork image:
-                <input type="file" name="newArtwork"  accept="image/*"/>
-                <input type="submit" name="submitNewArtwork" value="Upload" />
-            </form>
         </div>
 
 

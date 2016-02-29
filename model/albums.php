@@ -116,6 +116,25 @@
                return $succ;
           }
 
+          /**
+           * Returns the ID for the album with the given name or -1 if it does not exist
+           */
+          public static function getAlbumId($title)
+          {
+               $db = Database::getInstance();
+
+               $sql = 'SELECT * FROM albums WHERE title=\'' . $title . '\'';
+               $req = $db->query($sql);
+               if ($req->num_rows == 0)
+               {
+                    return -1;
+               }
+
+               $album = $req->fetch_assoc();
+
+               return $album['id'];
+          }
+
      }
 
 ?>

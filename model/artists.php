@@ -133,7 +133,6 @@
           {
                $db = Database::getInstance();
 
-               // First make sure there isn't already an entry with the given name
                $sql = 'SELECT * FROM artists WHERE name=\'' . $name . '\'';
                $req = $db->query($sql);
                if ($req->num_rows == 0)

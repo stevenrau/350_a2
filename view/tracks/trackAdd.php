@@ -1,32 +1,24 @@
 <?php
-    // Include the album controller file
-    include("../../controller/albums_controller.php");
+    // Include the tracks controller file
+    include("../../controller/tracks_controller.php");
 
-    $controller = new Albums_Controller();
+    $controller = new Tracks_Controller();
 
-    // If the submit new album button was pressed, send info to the controller
+    // If the submit new track button was pressed, send info to the controller
     if( isset($_POST['submit']) )
     {
         $newTitle = $_POST['newTitle'];
         $newArtist = $_POST['newArtist'];
-        $imgName = NULL;
-        $imgTmpName = NULL;
+        $newAlbum = $_POST['newAlbum'];
 
-        // If an artwork image was provided, get the name details
-        if (is_uploaded_file($_FILES['newArtwork']['tmp_name']))
-        {
-            $imgName = $_FILES["newArtwork"]["name"];
-            $imgTmpName = $_FILES["newArtwork"]["tmp_name"];
-        }
-
-        $controller->addAlbum($newTitle, $newArtist, $imgName, $imgTmpName);
+        $controller->addTrack($newTitle, $newArtist, $newAlbum);
     }
 ?>
 
 <html lang="en">
     <head>
         <link rel="stylesheet" type="text/css" href="/350_a2/a2Style.css">
-        <title>Albums</title>
+        <title>Tracks</title>
     </head>
 
     <body>
@@ -42,9 +34,9 @@
         </header>
 
         <div id="home_main">
-            <h2> Add an album </h2>
+            <h2> Add a new track </h2>
 
-            <p> *NOTE* If the new album's artist does not exist in the database, a new entry for the artist will be created.</p>
+            <p> *NOTE* If the new track's artist and/or album does not exist in the database, a new entry for the artist/album will be created.</p>
 
             <form action="" method="post" enctype="multipart/form-data">
                 <!-- Form for the new title  -->
@@ -55,10 +47,8 @@
                 Artist name:
                 <input class="form_input" type="text" name="newArtist">
                 <br><br>
-                <!-- Upload a new artist image -->
-                <input type="hidden" name="MAX_FILE_SIZE" value="512000" />
-                Upload album art (optional):
-                <input type="file" name="newArtwork"  accept="image/*"/>
+                Album name:
+                <input class="form_input" type="text" name="newAlbum">
                 <br><br>
                 <input type="submit" name="submit" value="Add">
             </form>

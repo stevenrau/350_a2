@@ -1,14 +1,14 @@
 <?php
-    // Include the artists controller file
-    include("../../controller/albums_controller.php");
+    // Include the track controller file
+    include("../../controller/tracks_controller.php");
 
-    $controller = new Albums_Controller();
-    $album = $controller->getAlbum($_GET['albumId']);
+    $controller = new Tracks_Controller();
+    $track = $controller->getTrack($_GET['trackId']);
 
     // If the confirm delete button was pressed, send info to the controller
     if( isset($_POST['confirmDelete']) )
     {
-        $controller->deleteAlbum($_GET['albumId']);
+        $controller->deleteTrack($_GET['trackId']);
     }
 
 ?>
@@ -32,32 +32,31 @@
         </header>
 
         <div id="home_main">
-            <h2> Delete Album </h2>
+            <h2> Delete Track </h2>
 
-            <!-- Display the chosen artist info to be deleted -->
-            <h3 class="operation_header"> Album chosen to delete: </h3>
-            <p> *NOTE* By deleting this album, you will also delete any associated songs</p>
-            <table id="album_list" border="1" cellpadding="5">
+            <!-- Display the chosen track info to be deleted -->
+            <h3 class="operation_header"> Track chosen to delete: </h3>
+            <table id="track_list" border="1" cellpadding="5">
                 <tr>
-                    <td class="album_list_header">Album Art</td>
-                    <td class="album_list_header">Title</td>
-                    <td class="album_list_header">Artist</td>
-                    <td class="album_list_header">Artist Image</td>
+                    <td class="track_list_header">Album Art</td>
+                    <td class="track_list_header">Title</td>
+                    <td class="track_list_header">Artist</td>
+                    <td class="track_list_header">Album</td>
                 </tr>
                 <tr>
-                    <td class="imgCol"> <img class="albumImg" src=" <?php echo $album->artwork_url ?>" /></td>
-                    <td> <?php echo $album->title ?></td>
-                    <td> <?php echo $album->artist ?></td>
-                    <td class="imgCol"> <img class="artistImg" src=" <?php echo $album->artist_img_url ?>" /></td>
+                    <td class="imgCol"> <img class="albumImg" src=" <?php echo $track->artwork_url ?>" /></td>
+                    <td> <?php echo $track->title ?></td>
+                    <td> <?php echo $track->artist ?></td>
+                    <td> <?php echo $track->album ?></td>
 
                     <!-- Get the current albums's id to use in _GET methods -->
-                    <?php $albumId = $album->id; ?>
+                    <?php $trackId = $track->id; ?>
                 </tr>
             </table>
 
             <!-- Use POST form to submit the new name  -->
             <form action="" method="post">
-                Are you sure you want to delete this album?
+                Are you sure you want to delete this track?
                 <input type="submit" name="confirmDelete" value="Delete">
             </form>
 

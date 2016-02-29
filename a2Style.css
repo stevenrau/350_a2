@@ -187,6 +187,7 @@ ul
     margin-top: 15px;
     margin-bottom: 15px;
 }
+
 album_list_header
 {
     font-weight: bold;
@@ -202,6 +203,30 @@ album_list_header
     width: 40%;
     height:auto;
 }
+
+
+/*======================================================= */
+/* Start of tracks page content CSS */
+/*======================================================= */
+
+
+#track_list
+{
+    text-align:center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+track_list_header
+{
+    font-weight: bold;
+}
+
+.trackRow
+{
+    margin: 50px;
+}
+
 
 
 

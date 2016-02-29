@@ -70,3 +70,9 @@ UPDATE albums SET artwork_url='/350_a2/artwork/1989.jpg' WHERE title='1989';
 
 
 -- Insert tracks into the table
+INSERT INTO tracks(title, artist_id, album_id) VALUES ('Alright', 2, 1);
+INSERT INTO tracks(title, artist_id, album_id) VALUES ('King Kunta', 2, 1);
+INSERT INTO tracks(title, artist_id, album_id) VALUES ('Hello', 3, 2);
+INSERT INTO tracks(title, artist_id, album_id) VALUES ('Bad Blood', 4, 3);
+INSERT INTO tracks(title, artist_id, album_id) VALUES ('Blank Space', 4, 3);
+INSERT INTO tracks(title, artist_id, album_id) VALUES ('Shake It Off', 4, 3);

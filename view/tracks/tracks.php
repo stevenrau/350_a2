@@ -1,10 +1,10 @@
 <?php
     // Include the albums controller file
-    include("../../controller/albums_controller.php");
+    include("../../controller/tracks_controller.php");
 
     // Get all of the albums
-    $controller = new Albums_Controller();
-    $albumsList = $controller->getAllAlbums();
+    $controller = new Tracks_Controller();
+    $tracksList = $controller->getAllTracks();
 ?>
 
 <html lang="en">
@@ -26,45 +26,45 @@
         </header>
 
         <div id="home_main">
-            <h2> Albums  </h2>
+            <h2> Tracks  </h2>
 
             <h3 class="operation_header"> Possible Operations: </h3>
             <ul id="operation_list">
                 <li class="operation_list">
-                    <a class="operation_list" href="albumAdd.php"> Add a new album </a>
+                    <a class="operation_list" href="trackAdd.php"> Add a new track </a>
                 </li>
             </ul>
 
-            <!-- Construct the table of all albums -->
-            <h3 class="operation_header"> List of all albums: </h3>
-            <table id="album_list" border="1" cellpadding="5">
+            <!-- Construct the table of all tracks -->
+            <h3 class="operation_header"> List of all tracks: </h3>
+            <table id="track_list" border="1" cellpadding="5">
                 <tr>
-                    <td class="album_list_header">Album Art</td>
-                    <td class="album_list_header">Title</td>
-                    <td class="album_list_header">Artist</td>
-                    <td class="album_list_header">Artist Image</td>
+                    <td class="track_list_header">Album Art</td>
+                    <td class="track_list_header">Title</td>
+                    <td class="track_list_header">Artist</td>
+                    <td class="track_list_header">Album</td>
                 </tr>
-                <?php foreach ($albumsList as $curAlbum) : ?>
+                <?php foreach ($tracksList as $curTrack) : ?>
                 <tr>
 
-                    <td class="imgCol"> <img class="albumImg" src=" <?php echo $curAlbum->artwork_url ?>" /></td>
-                    <td> <?php echo $curAlbum->title ?></td>
-                    <td> <?php echo $curAlbum->artist ?></td>
-                    <td class="imgCol"> <img class="artistImg" src=" <?php echo $curAlbum->artist_img_url ?>" /></td>
+                    <td class="imgCol"> <img class="albumImg" src=" <?php echo $curTrack->artwork_url ?>" /></td>
+                    <td> <?php echo $curTrack->title ?></td>
+                    <td> <?php echo $curTrack->artist ?></td>
+                    <td> <?php echo $curTrack->album ?></td>
 
                     <!-- Get the current albums's id to use in _GET methods -->
-                    <?php $albumId = $curAlbum->id; ?>
+                    <?php $trackId = $curTrack->id; ?>
 
                     <td>
-                        <form name="editAlbum" action="albumUpdate.php" method="GET">
-                            <input type="hidden" name="albumId" value="<?php echo $albumId; ?>"/>
-                            <input type="submit" name="editAlbum" value="Edit"/>
+                        <form name="editTrack" action="trackUpdate.php" method="GET">
+                            <input type="hidden" name="trackId" value="<?php echo $trackId; ?>"/>
+                            <input type="submit" name="editTrack" value="Edit"/>
                         </form>
                     </td>
                     <td>
-                        <form name="deleteAlbum" action="albumDelete.php" method="GET">
-                            <input type="hidden" name="albumId" value="<?php echo $albumId; ?>"/>
-                            <input type="submit" name="deleteAlbum" value="Delete"/>
+                        <form name="deleteTrack" action="trackDelete.php" method="GET">
+                            <input type="hidden" name="trackId" value="<?php echo $trackId; ?>"/>
+                            <input type="submit" name="deleteTrack" value="Delete"/>
                         </form>
                     </td>
                 </tr>
